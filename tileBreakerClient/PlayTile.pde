@@ -1,19 +1,13 @@
-class PlayTile{
-  float x, y, w, h, r;
+class PlayTile extends Tile{
+  //float x, y, w, h, r;
   float speed = 5.0;
-  color c;
   int left = 0;
   int right = 0;
   
   
   
-  PlayTile(float tempx, float tempy, float tempw, float temph, float tempr, color tempc){
-    x =  tempx;
-    y = tempy;
-    w = tempw;
-    h = temph;
-    r = tempr;
-    c = tempc;
+  PlayTile(float x, float y, float w, float h, float r, color c){
+    super(x, y, w, h, r, c);
   }
   
   void display(){
@@ -31,6 +25,8 @@ class PlayTile{
     rect(x,y,w,h,r);
   }
   
+  
+  // movement
   void setSpeed(float temp){
     speed = temp;
   };
@@ -50,7 +46,6 @@ class PlayTile{
     return false;
      
   }
-  
   
   
 }
