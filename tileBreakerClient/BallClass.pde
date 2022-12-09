@@ -1,11 +1,18 @@
+// Pravesh Agarwal
+// 276 Multimedia and Design
+// Project 2
+// Submitted to Prof. Stephen P. Carl
+// on Dec 6, 2022
+// Creates a ball object with movement and collision detection
+// 
+
 class Ball {
   // Ball Variables
   float x, y;      // coordinates of ball
   float r;               // radius of the ball
   float xSpeed = 2.8;  // Speed of the shape
   float ySpeed = 2.2;  // Speed of the shape
-  //int xDir = 1;  // Left or Right
-  //int yDir = 1;  // Top to Bottom
+
   
   
   Ball(float tempx, float tempy, float tempr){
@@ -14,28 +21,48 @@ class Ball {
     r = tempr;
   }
   
-  
+  // Display the ball
   void display(){
     fill(0);
     ellipseMode(RADIUS);
     ellipse(x, y, r, r);
   }
   
+  // Checking wall boundary collision and change direction
+  int beyondwall = 0;
   void bounce(){
     // Moving the ball
     x = x + xSpeed;
     y = y + ySpeed;
     
-    // Checking wall boundary collision and change direction
+    
     // right wall || left wall
     if (x > width-r || x-r < 0) {
       xSpeed *= -1;
     }
-    // bottom wall || top wall
-    if ( /*y > height-r ||*/  y-r < 0) {
+    // top wall
+    if ( y-r < 0) {
       ySpeed *= -1;
     }
+    
+    // if ball touches bottom wall, play sound.
+    // Need beyondwall counter because 
+    if(y > height-r && beyondwall < 1){
+      mySound.play(250, 350);
+      beyondwall += 1;
+    }
+    // Exits the game after losing.
+    if(beyondwall == 1){
+      exit();
+    }
   }
+  
+  // Collision detection
+
+  // - is the ball's coordinates within the coordinates of the rectangle
+  // - bounce the ball - flip the direction vector of the ball. 
+  // flip x for horizontal collision
+  // flip y for vertical collision
   
   boolean checkTileCollision(Tile t){
     // checking if ball touches left or right of the tile
@@ -56,6 +83,4 @@ class Ball {
     
   }
   
-
-
 }

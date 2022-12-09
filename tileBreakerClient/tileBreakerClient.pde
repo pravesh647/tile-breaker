@@ -1,8 +1,9 @@
 // Pravesh Agarwal
 // 276 Multimedia and Design
-// 
+// Project 2
 // Submitted to Prof. Stephen P. Carl
 // on Dec 6, 2022
+// Client that makes the tilebreaker game using multiple class objects
 // 
 
 // References:
@@ -24,13 +25,14 @@ import netP5.*;
 
 Ball myBall;
 PlayTile myPlayTile;
+Sound mySound;
 ArrayList<Tile> myTiles = new ArrayList<Tile>();
 
 void setup(){
   noStroke();
   size(1000, 700);
   background(255);
-  // Specific #frames to be displayed each second. default is 60. more = smooth img
+  // Specific #fra mes to be displayed each second. default is 60. more = smooth img
   frameRate(70);
   
   // Constructing ball
@@ -49,6 +51,8 @@ void setup(){
   // Constructing playtile
   myPlayTile = new PlayTile(width/2, height-30, 50, 20, 5, color(0,0,255));
   
+  // Constructing sound
+  mySound  = new Sound("127.0.0.1", 9001);
   
 }
 
@@ -58,6 +62,7 @@ void draw(){
   // drawing playTile
   myPlayTile.display();
   
+  
   // drawing tiles
   for (Iterator<Tile> iter = myTiles.iterator(); iter.hasNext();) {
     Tile temp = iter.next();
@@ -66,18 +71,19 @@ void draw(){
     }
     else{
       iter.remove();
+      mySound.play(440, 50);
     }
   }
  
-  myBall.checkTileCollision(myPlayTile);
+  if(myBall.checkTileCollision(myPlayTile)){
+    mySound.play(500, 100);
+  }
   // drawing Ball
   
   myBall.display();
   myBall.bounce();
   
 }
-
-
 
 void keyPressed() {
   if (key == CODED) {
@@ -98,10 +104,3 @@ void keyReleased() {
     }
   }
 }
-
-// Collision detection
-
-// - is the ball's coordinates within the coordinates of the rectangle
-// - bounce the ball - flip the direction vector of the ball. 
-// flip x for horizontal collision
-// flip y for vertical collision

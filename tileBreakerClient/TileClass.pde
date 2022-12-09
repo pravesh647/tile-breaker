@@ -1,3 +1,12 @@
+// Pravesh Agarwal
+// 276 Multimedia and Design
+// Project 2
+// Submitted to Prof. Stephen P. Carl
+// on Dec 6, 2022
+// Creates a Tile object
+// 
+
+
 class Tile{
   float x, y, w, h, r;
   color c;
