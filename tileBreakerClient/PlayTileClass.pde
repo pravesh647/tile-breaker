@@ -5,8 +5,6 @@
 // on Dec 6, 2022
 // class extends TileClass to add left and right movement 
 
-// 
-
 class PlayTile extends Tile{
   //float x, y, w, h, r;
   float speed = 5.0;

@@ -1,6 +1,6 @@
-#N canvas 165 159 1218 862 12;
+#N canvas 165 362 1218 667 12;
 #X obj 241 589 output~;
-#X obj 317 605 tgl 18 0 THIS_IS_HERE_TO_GET_RID_OF_THE_OUTLET \$0-dsp-toggle dsp 2 9 1 9 #d8fcd8 #bcbcbc #202020 0 1;
+#X obj 317 605 tgl 18 0 THIS_IS_HERE_TO_GET_RID_OF_THE_OUTLET \$0-dsp-toggle dsp 2 9 1 9 #fcfcfc #bcbcbc #202020 0 1;
 #N canvas 366 514 482 356 dsp 0;
 #X obj 11 7 inlet;
 #X obj 92 226 select 0 1;
@@ -45,6 +45,7 @@
 #X obj 205 169 mrpeach/routeOSC /note /delay;
 #X text 537 166 <-- Routing note and on/off messages;
 #X obj 284 218 bng 19 250 50 0 empty empty empty 0 -10 0 12 #fcfcfc #000000 #000000;
+#X msg 313 435 0.5;
 #X connect 1 0 2 0;
 #X connect 3 0 6 0;
 #X connect 4 0 5 0;
@@ -56,6 +57,8 @@
 #X connect 9 0 10 1;
 #X connect 10 0 3 0;
 #X connect 11 0 8 0;
+#X connect 11 0 14 0;
 #X connect 11 1 9 0;
 #X connect 11 1 13 0;
 #X connect 13 0 10 0;
+#X connect 14 0 7 1;

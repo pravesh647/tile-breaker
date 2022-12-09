@@ -32,7 +32,7 @@ void setup(){
   noStroke();
   size(1000, 700);
   background(255);
-  // Specific #fra mes to be displayed each second. default is 60. more = smooth img
+  // Specific #frames to be displayed each second. default is 60. more = smooth img
   frameRate(70);
   
   // Constructing ball
